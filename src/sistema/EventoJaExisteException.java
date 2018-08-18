@@ -1,0 +1,10 @@
+package sistema;
+
+public class EventoJaExisteException extends Exception {
+	
+	@Override
+	public String getMessage() {
+		return "ERRO>Evento com esse nome já tá cadastrado.";
+	}
+
+}

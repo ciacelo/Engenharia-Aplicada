@@ -1,52 +1,55 @@
 package sistema;
 
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class GenrenciaUsuarios {
 	
+	private static GenrenciaUsuarios instance = null;
 	private static ArrayList<Usuario> usuarios;
 	
-	private GenrenciaUsuarios() {
-		this.usuarios = new ArrayList<>();
-		
+	protected GenrenciaUsuarios() {
+		usuarios = new ArrayList<Usuario>();
 	}
 	
-	public List<Usuario> getInstance() {
-		if (usuarios == null)
-			new GenrenciaUsuarios();
-		return usuarios;
+	//Ao inves de dar num new GerenciaUsuarios, chamar esse método
+	public static GenrenciaUsuarios getInstance() {
+		if (instance == null)
+			instance = new GenrenciaUsuarios();
+		return instance;
 	}
 	
-	private void listaUsuarios() {
+	// toStrign temporário, dá pra mudar para um que fique melhor para a interface depois
+	public static String listaUsuarios() { 
 		String saida = "";
-		for (Usuario usuario : usuarios) {
-			saida += usuario.toString() + "\n - - - \n";
-		}
-
+		if (!usuarios.isEmpty())
+			for (Usuario usuario : usuarios) {
+				saida += usuario.toString() + "\n - - - \n";
+			}
+		else
+			return "não há usuarios cadastrados";
+		return saida;
 	}
 	
-	private void cadastraUsuario(String nome, String email, String senha) throws UsuarioJaExisteException {
-		Usuario novoUsuario = new Usuario(nome, email, senha);
-		for (Usuario usuario : usuarios) {
-			if (novoUsuario.getEmail().equals(email)) {
-				throw new UsuarioJaExisteException();
-			}
+	public static void cadastraUsuario(Usuario novoUsuario) throws UsuarioJaExisteException {
+		
+		if (procuraUsuario(novoUsuario.getEmail()) != null) {
+			throw new UsuarioJaExisteException();
 		}
 		usuarios.add(novoUsuario);
 	}
 	
-	private Usuario procuraUsuario(String nome) {
-		for (Usuario usuario : usuarios) {
-			if (usuario.getNome().equals(nome)) {
-				return usuario;
+	public static Usuario procuraUsuario(String email) {
+		if (usuarios != null) {
+			for (Usuario usuario : usuarios) {
+				if (usuario.getEmail().equals(email)) {
+					return usuario;
+				}
 			}
 		}
 		return null;
 	}
 
-	private boolean apagaUsuario(String nome) {
+	public static boolean apagaUsuario(String nome) {
 		Usuario usuario = procuraUsuario(nome);
 		if (usuario != null) {
 			return usuarios.remove(usuario);

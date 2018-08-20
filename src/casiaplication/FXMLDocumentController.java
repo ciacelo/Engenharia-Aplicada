@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -46,6 +47,21 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnMinimize;
     
     @FXML
+    public void enterLogin(ActionEvent enterLogin){
+        try {
+            String user = txtUserName.getText();
+            String pass = txtPassword.getText();
+            if(user.equals("casi@ufpb")&& pass.equals("casi2016.1")){
+                JOptionPane.showMessageDialog(null, "Seja Bem-vindo.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário ou senha, incorretos");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro de exeção!");
+        }
+    }
+            
+    @FXML
     public void handlerActionMinimize(ActionEvent mouseEvent){
         Stage stage = (Stage)anchorPane.getScene().getWindow();
         stage.setIconified(true);
@@ -56,6 +72,7 @@ public class FXMLDocumentController implements Initializable {
     public void handlerMouseClicked(ActionEvent event){
         System.exit(0);
     }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

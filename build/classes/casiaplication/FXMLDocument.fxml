@@ -57,7 +57,7 @@
                                  <children>
                                     <JFXTextField fx:id="txtUserName" focusColor="#dcdee4" promptText="Username" unFocusColor="#434242" />
                                     <JFXPasswordField fx:id="txtPassword" focusColor="#dadbe1" promptText="Senha" GridPane.rowIndex="1" />
-                                    <JFXButton fx:id="btnLogar" prefHeight="33.0" prefWidth="203.0" style="-fx-background-color: #0000FF;" text="ENTRAR" textFill="WHITE" GridPane.rowIndex="2" />
+                                    <JFXButton fx:id="btnLogar" onAction="#enterLogin" prefHeight="33.0" prefWidth="203.0" style="-fx-background-color: #0000FF;" text="ENTRAR" textFill="WHITE" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                            </children>

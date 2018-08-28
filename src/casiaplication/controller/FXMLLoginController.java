@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package casiaplication;
+package casiaplication.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
  *
  * @author ciacelo
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLLoginController implements Initializable {
     
     @FXML
     private AnchorPane anchorPane;

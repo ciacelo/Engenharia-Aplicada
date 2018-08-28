@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="945.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="947.0" style="-fx-background-color: #ff944d; -fx-background-position: botton;">
+         <graphic>
+            <JFXButton fx:id="btnMinimize" contentDisplay="RIGHT" onAction="#handlerActionMinimize" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: #fff; -fx-background-position: right;" text="  " textFill="#f5f5f5" textOverrun="CENTER_ELLIPSIS" underline="true" />
+         </graphic>
+      </Label>
+      <SplitPane dividerPositions="0.3075291622481442" prefHeight="548.0" prefWidth="932.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="546.0" prefWidth="200.0" style="-fx-background-color: #e65c00;">
+               <children>
+                  <ImageView fitHeight="648.0" fitWidth="977.0" layoutX="-537.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../imagens/Imagens/back3.png" />
+                     </image>
+                  </ImageView>
+                  <VBox layoutX="16.0" layoutY="71.0" prefHeight="429.0" prefWidth="247.0" style="-fx-border-color: #fff; -fx-padding: 4px;">
+                     <children>
+                        <JFXButton prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" />
+                        <JFXButton prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" text="Eventos" textFill="#f2efef">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" />
+                        <JFXButton prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" />
+                        <JFXButton prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" />
+                        <JFXButton prefHeight="64.0" prefWidth="245.0" style="-fx-border-color: #fff;" />
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="50.0" fitWidth="60.0" layoutX="116.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../imagens/Imagens/icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="524.0" prefWidth="660.0" style="-fx-background-color: #cc5200;" />
+         </items>
+      </SplitPane>
+   </children>
+</VBox>

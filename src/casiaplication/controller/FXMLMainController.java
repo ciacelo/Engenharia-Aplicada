@@ -8,20 +8,27 @@ package casiaplication.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import com.jfoenix.controls.JFXButton;
+import javafx.fxml.FXML;
+
 
 /**
  * FXML Controller class
  *
  * @author ciacelo
  */
-public class FXMLMainController implements Initializable {
+public class FXMLMainController{
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    @FXML
+    private JFXButton btnMain;
+
+    @FXML
+    private JFXButton btnEvents;
+
+    @FXML
+    private JFXButton btnAtividade;
+
+    
+     
     
 }

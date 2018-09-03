@@ -53,11 +53,12 @@ public class FXMLLoginController implements Initializable {
             String pass = txtPassword.getText();
             if(user.equals("casi@ufpb")&& pass.equals("casi2016.1")){
                 JOptionPane.showMessageDialog(null, "Seja Bem-vindo.");
+                casiaplication.CasiAplication.changeScreen("main");
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha, incorretos");
             }
         } catch (Exception e) {
-            System.out.println("Erro de exeção!");
+            System.out.println(e);
         }
     }
             

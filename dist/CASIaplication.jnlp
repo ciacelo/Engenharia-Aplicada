@@ -8,13 +8,13 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CASIaplication.jar" size="3712214" download="eager" />
+    <jar href="CASIaplication.jar" size="3716641" download="eager" />
     <jar href="lib\jfoenix-8.0.7.jar" size="2631271" download="eager" />
     <jar href="lib\jfoenix-9.0.6.jar" size="2374031" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="CASIaplication" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="casiaplication.CASIaplication"  name="CASIaplication" />
+  <jfx:javafx-desc  width="800" height="600" main-class="casiaplication.CasiAplication"  name="CASIaplication" />
   <update check="always"/>
 </jnlp>

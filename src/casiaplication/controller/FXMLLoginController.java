@@ -14,7 +14,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -51,9 +55,14 @@ public class FXMLLoginController implements Initializable {
         try {
             String user = txtUserName.getText();
             String pass = txtPassword.getText();
-            if(user.equals("casi@ufpb")&& pass.equals("casi2016.1")){
+            if(user.equals("c")&& pass.equals("c")){
                 JOptionPane.showMessageDialog(null, "Seja Bem-vindo.");
-                casiaplication.CasiAplication.changeScreen("main");
+                
+                Parent mainParent = FXMLLoader.load(getClass().getResource("/casiaplication/view/FXMLMain.fxml"));
+                Scene mainScene = new Scene(mainParent);
+                Stage app_stage = (Stage) ((Node)enterLogin.getSource()).getScene().getWindow();
+                app_stage.setScene(mainScene);
+                app_stage.show();
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha, incorretos");
             }
@@ -63,14 +72,14 @@ public class FXMLLoginController implements Initializable {
     }
             
     @FXML
-    public void handlerActionMinimize(ActionEvent mouseEvent){
+    public void handlerActionMinimize(ActionEvent event){
         Stage stage = (Stage)anchorPane.getScene().getWindow();
         stage.setIconified(true);
 
     }
     
     @FXML
-    public void handlerMouseClicked(ActionEvent event){
+    public void handlerActionClosed(ActionEvent event){
         System.exit(0);
     }
     

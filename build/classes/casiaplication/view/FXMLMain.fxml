@@ -1,47 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.SplitPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="945.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLMainController">
-   <children>
-      <SplitPane dividerPositions="0.3075291622481442" prefHeight="548.0" prefWidth="932.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="546.0" prefWidth="200.0" style="-fx-background-color: #e65c00;">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="511.0" prefWidth="178.0" style="-fx-background-color: #ff6600; -fx-border-color: #1a0000;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" layoutX="8.0" layoutY="7.0" prefHeight="378.0" prefWidth="163.0" spacing="2.0" style="-fx-padding: 4px;">
                <children>
-                  <ImageView fitHeight="648.0" fitWidth="977.0" layoutX="-537.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../imagens/Imagens/back3.png" />
-                     </image>
-                  </ImageView>
-                  <VBox layoutX="16.0" layoutY="71.0" prefHeight="429.0" prefWidth="247.0" style="-fx-border-color: #fff; -fx-padding: 4px;">
-                     <children>
-                        <JFXButton fx:id="btnMain" prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" />
-                        <JFXButton fx:id="btnEvents" prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" text="Eventos" textFill="#f2efef">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="16.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="btnAtividade" prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" />
-                        <JFXButton prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" />
-                        <JFXButton prefHeight="50.0" prefWidth="247.0" style="-fx-border-color: #fff;" />
-                        <JFXButton prefHeight="64.0" prefWidth="245.0" style="-fx-border-color: #fff;" />
-                     </children>
-                  </VBox>
-                  <ImageView fitHeight="50.0" fitWidth="60.0" layoutX="116.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../imagens/Imagens/icon.png" />
                      </image>
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin>
                   </ImageView>
+                  <JFXButton fx:id="btnEvents" prefHeight="50.0" prefWidth="247.0" ripplerFill="#c5b8b8" text="Eventos" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnAtividade" prefHeight="50.0" prefWidth="247.0" ripplerFill="#c5b8b8" />
+                  <JFXButton prefHeight="50.0" prefWidth="247.0" />
+                  <JFXButton prefHeight="50.0" prefWidth="247.0" />
+                  <JFXButton prefHeight="50.0" prefWidth="247.0" />
+                  <JFXButton fx:id="btnMain" prefHeight="50.0" prefWidth="247.0" />
                </children>
-            </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="524.0" prefWidth="660.0" style="-fx-background-color: #cc5200;" />
-         </items>
-      </SplitPane>
-   </children>
-</VBox>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <effect>
+                  <Glow />
+               </effect>
+            </VBox>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" />
+         </effect>
+      </AnchorPane>
+   </left>
+   <top>
+      <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="28.0" prefWidth="577.0" spacing="7.0" style="-fx-background-color: #d9d9d9;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../imagens/Imagens/close.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../imagens/Imagens/minimize%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnMin" fitHeight="21.0" fitWidth="20.0" onMouseClicked="#handlerMouseMin" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../imagens/Imagens/minimize.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+         </padding>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" radius="8.5175" width="15.07" />
+         </effect>
+      </HBox>
+   </top>
+</BorderPane>

@@ -18,40 +18,33 @@ import javafx.stage.StageStyle;
  */
 public class CasiAplication extends Application {
     
-    private static Stage stage;
-    private static Stage mainStage;
-    private static Scene mainScene;
+    private static Stage stage = null;
+  
     
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage stage) throws Exception {
         
-        stage = primaryStage;
-        
-        primaryStage.setTitle("CASystem");
-        
-        Parent root = FXMLLoader.load(getClass().getResource("view/FXMLLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/casiaplication/view/FXMLLogin.fxml"));
         Scene scene = new Scene(root);
-        
-        Parent mainRoot = FXMLLoader.load(getClass().getResource("view/FXMLMain.fxml"));
-        mainScene = new Scene(mainRoot);
-        
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.show();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        this.stage = stage;
+        stage.show();
+       
         
     }
     
-    public static void changeScreen(String scr){
+   /* public static void changeScreen(String scr){
         switch (scr){
             case "main":
                 stage.setScene(mainScene);
-                stage.initStyle(StageStyle.UTILITY);
+               
                 break;
             case "enter":
                 stage.setScene(mainScene);
         }
     }
-
+    */
     /**
      * @param args the command line arguments
      */
@@ -60,3 +53,4 @@ public class CasiAplication extends Application {
     }
     
 }
+ 

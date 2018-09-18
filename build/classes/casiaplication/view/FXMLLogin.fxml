@@ -74,8 +74,8 @@
                         </ImageView>
                      </children>
                   </GridPane>
-                  <JFXButton fx:id="btnClose" layoutX="602.0" layoutY="1.0" onAction="#handlerMouseClicked" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: #fff;" text="X" textFill="#f5f5f5" />
-                  <JFXButton fx:id="btnMinimize" layoutX="569.0" layoutY="1.0" onAction="#handlerActionMinimize" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: #fff;" text="  " textFill="#f5f5f5" textOverrun="CENTER_ELLIPSIS" underline="true" />
+                  <JFXButton fx:id="btnClose" layoutX="602.0" layoutY="1.0" onAction="#handlerActionClosed" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: #fff;" text="X" textFill="#f5f5f5" />
+                  <JFXButton fx:id="btnMinimize" layoutX="570.0" layoutY="1.0" onAction="#handlerActionMinimize" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: #fff;" text="  " textFill="#f5f5f5" textOverrun="CENTER_ELLIPSIS" underline="true" />
                </children>
             </AnchorPane>
          </children>

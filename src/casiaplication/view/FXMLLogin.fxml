@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -43,7 +44,7 @@
                         <RowConstraints maxHeight="281.0" minHeight="10.0" prefHeight="281.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <AnchorPane prefHeight="271.0" prefWidth="239.0" style="-fx-background-color: #ff99004d; -fx-border-color: #fff;" GridPane.rowIndex="2">
+                        <AnchorPane prefHeight="271.0" prefWidth="239.0" style="-fx-background-color: #fff28909; -fx-border-color: #fff;" GridPane.rowIndex="2">
                            <children>
                               <GridPane layoutX="18.0" layoutY="35.0" prefHeight="161.0" prefWidth="203.0">
                                  <columnConstraints>
@@ -57,20 +58,32 @@
                                  <children>
                                     <JFXTextField fx:id="txtUserName" focusColor="#dcdee4" promptText="Username" unFocusColor="#434242" />
                                     <JFXPasswordField fx:id="txtPassword" focusColor="#dadbe1" promptText="Senha" GridPane.rowIndex="1" />
-                                    <JFXButton fx:id="btnLogar" onAction="#enterLogin" prefHeight="33.0" prefWidth="203.0" style="-fx-background-color: #0000FF;" text="ENTRAR" textFill="WHITE" GridPane.rowIndex="2" />
+                                    <JFXButton fx:id="btnLogar" onAction="#enterLogin" prefHeight="33.0" prefWidth="203.0" style="-fx-background-color: #0000FF;" text="ENTRAR" textFill="WHITE" GridPane.rowIndex="2">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect></JFXButton>
                                  </children>
                               </GridPane>
                            </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                         </AnchorPane>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="239.0" text="Bem-vindo ao Gerenciador" textAlignment="CENTER" textFill="#f5f0f0" GridPane.rowIndex="1">
                            <font>
                               <Font name="Segoe UI Semibold" size="18.0" />
                            </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                         </Label>
                         <ImageView fitHeight="78.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
                            <image>
                               <Image url="@../../imagens/Imagens/icon.png" />
                            </image>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                         </ImageView>
                      </children>
                   </GridPane>

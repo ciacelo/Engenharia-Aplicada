@@ -18,7 +18,7 @@ import javafx.stage.StageStyle;
  */
 public class CasiAplication extends Application {
     
-    private static Stage stage = null;
+    public static Stage stage = null;
   
     
     @Override
@@ -27,7 +27,7 @@ public class CasiAplication extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/casiaplication/view/FXMLLogin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
         this.stage = stage;
         stage.show();
        

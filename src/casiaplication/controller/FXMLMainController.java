@@ -5,11 +5,9 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-<<<<<<< HEAD
-=======
 
 import javafx.event.ActionEvent;
->>>>>>> origin/master
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -35,15 +33,10 @@ public class FXMLMainController {
     
     @FXML
     private BorderPane borderPane;
-<<<<<<< HEAD
+
     @FXML
     private ImageView btnClose;
-=======
-    
-    @FXML
-    private ImageView btnClose;
-    
->>>>>>> origin/master
+
     @FXML
     private ImageView btnMax;
 
@@ -57,17 +50,7 @@ public class FXMLMainController {
        
     }
     
-<<<<<<< HEAD
-    private void loadEvent(String event){
-        Parent root = null;
-        
-        try {
-            root = FXMLLoader.load(getClass().getResource(event+".fxml"));
-        } catch (IOException e) {
-            Logger.getLogger(FXMLMainController.class.getName()).log(Level.SEVERE, null, e);
-        }
-        borderPane.setCenter(root);
-=======
+
     protected void loadEvent(String event){
         BorderPane mainRoot = null; 
         
@@ -77,17 +60,15 @@ public class FXMLMainController {
             Logger.getLogger(FXMLMainController.class.getName()).log(Level.SEVERE, null, e);
         }
         borderPane.setCenter(mainRoot);
->>>>>>> origin/master
+
     }
 
     @FXML
     public void handlerMouseMin(MouseEvent event) {
-<<<<<<< HEAD
-        CasiAplication.stage.setIconified(true);
-=======
+
     	Stage stage = (Stage)borderPane.getScene().getWindow();
     	stage.setIconified(true);
->>>>>>> origin/master
+
     }
     
     @FXML

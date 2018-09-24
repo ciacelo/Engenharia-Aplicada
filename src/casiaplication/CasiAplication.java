@@ -5,14 +5,7 @@
  */
 package casiaplication;
 
-<<<<<<< HEAD
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-=======
+
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
@@ -41,7 +34,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
->>>>>>> origin/master
+
 
 /**
  *
@@ -50,20 +43,13 @@ import javafx.util.Duration;
 public class CasiAplication extends Application {
     
     public static Stage stage = null;
-<<<<<<< HEAD
-  
-    
-    @Override
-    public void start(Stage stage) throws Exception {
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/casiaplication/view/FXMLLogin.fxml"));
-=======
+
     public BorderPane root;
     
     @Override
     public void start(Stage primaryStage) throws Exception {
         
-    	// Inicialização necessária para pressionar o botão ao teclar ENTER
+    	// InicializaÃ§Ã£o necessÃ¡ria para pressionar o botÃ£o ao teclar ENTER
         new EnableButtonEnterKey();
     	
         root = new FXMLLoader(getClass().getResource("/casiaplication/view/FXMLMain.fxml")).load();
@@ -87,11 +73,11 @@ public class CasiAplication extends Application {
         stageLogin.initOwner(primaryStage);
         stageLogin.setScene(sceneLogin);
 
-        // Deixando o painel transparente para a sombra ficar visível
+        // Deixando o painel transparente para a sombra ficar visÃ­vel
         stageLogin.getScene().getRoot().setStyle("-fx-background-color: transparent;");
         stageLogin.getScene().setFill(null);
 
-        // Definindo a ação para quando o login fechar: remover o desfoque da principal
+        // Definindo a aÃ§Ã£o para quando o login fechar: remover o desfoque da principal
         stageLogin.setOnHiding((e) -> root.setEffect(null));
 
         stageLogin.show();
@@ -105,20 +91,11 @@ public class CasiAplication extends Application {
         .play();
         /*Parent root = new FXMLLoader(getClass().getResource("/casiaplication/view/FXMLMain.fxml")).load();
         root.setEffect(new BoxBlur());
->>>>>>> origin/master
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
-        this.stage = stage;
-<<<<<<< HEAD
-        stage.show();
-       
-        
-    }
-=======
-        
-        
-        
+        this.stage = stage;        
         initMain();
        */
         
@@ -134,7 +111,6 @@ public class CasiAplication extends Application {
 		                
 		
     }
->>>>>>> origin/master
     
    /* public static void changeScreen(String scr){
         switch (scr){
@@ -147,10 +123,7 @@ public class CasiAplication extends Application {
         }
     }
     */
-<<<<<<< HEAD
-=======
     
->>>>>>> origin/master
     /**
      * @param args the command line arguments
      */
@@ -158,10 +131,6 @@ public class CasiAplication extends Application {
         launch(args);
     }
     
-<<<<<<< HEAD
-}
- 
-=======
     public class EnableButtonEnterKey extends ButtonBehavior<Button> {
 
         public EnableButtonEnterKey() {
@@ -172,4 +141,4 @@ public class CasiAplication extends Application {
     
     }
 }
->>>>>>> origin/master
+

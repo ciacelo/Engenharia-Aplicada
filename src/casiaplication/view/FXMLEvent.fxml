@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<<<<<<< HEAD
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
@@ -19,4 +20,20 @@
    <center>
       <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
+=======
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLEventController">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="btnNew" mnemonicParsing="false" onAction="#newEvent" text="Novo" />
+            <Button fx:id="btnEdit" mnemonicParsing="false" text="Editar" />
+            <Button fx:id="btnDelete" mnemonicParsing="false" text="Excluir" />
+            <Button fx:id="btnListEvent" mnemonicParsing="false" text="Listar Evento" />
+        </items>
+      </ToolBar>
+   </top>
+>>>>>>> origin/master
 </BorderPane>

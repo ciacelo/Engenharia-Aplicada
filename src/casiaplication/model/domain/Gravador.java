@@ -1,4 +1,6 @@
-package br.ufpb.ctrle;
+package casiaplication.model.domain;
+
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

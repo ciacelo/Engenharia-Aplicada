@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLEventController">
-   <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <items>
-          <Button fx:id="btnNew" mnemonicParsing="false" onAction="#newEvent" text="Novo" />
-            <Button fx:id="btnEdit" mnemonicParsing="false" text="Editar" />
-            <Button fx:id="btnDelete" mnemonicParsing="false" text="Excluir" />
-            <Button fx:id="btnListEvent" mnemonicParsing="false" text="Listar Evento" />
-        </items>
-      </ToolBar>
-   </top>
-</BorderPane>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLEventController">
+   <children>
+      <BorderPane layoutX="4.0" layoutY="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <Button fx:id="btnNew" mnemonicParsing="false" onAction="#newEvent" text="Novo" />
+                  <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editEvent" text="Editar" />
+                  <Button fx:id="btnDelete" mnemonicParsing="false" text="Excluir" />
+               </items>
+            </ToolBar>
+         </top>
+         <center>
+            <ListView prefHeight="540.0" prefWidth="746.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

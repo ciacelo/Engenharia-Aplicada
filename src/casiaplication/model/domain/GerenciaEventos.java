@@ -12,7 +12,7 @@ public class GerenciaEventos {
 		eventos = new ArrayList<Evento>();
 	}
 	
-	private void editaEvento() {
+	public void editaEvento() {
 		// TODO Auto-generated method stub
 
 	}
@@ -25,14 +25,14 @@ public class GerenciaEventos {
 	}
 	
 	
-	private void cadastraEvento(Evento novoEvento) throws EventoJaExisteException {
+	public void cadastraEvento(Evento novoEvento) throws EventoJaExisteException {
 		if (procuraEvento(novoEvento.getNome()) != null) {
 			throw new EventoJaExisteException();
 		}
 		eventos.add(novoEvento);
 	}
 	
-	private Evento procuraEvento(String nome) {
+	public Evento procuraEvento(String nome) {
 		
 		if (eventos != null) {
 			for (Evento evento : eventos) {
@@ -44,7 +44,7 @@ public class GerenciaEventos {
 		return null;
 	}
 	
-	private boolean removeEvento(String nome) {
+	public boolean removeEvento(String nome) {
 		Evento evento = procuraEvento(nome);
 		if (evento != null)
 			return eventos.remove(evento);

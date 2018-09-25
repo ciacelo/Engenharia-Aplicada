@@ -48,6 +48,8 @@ public class CasiAplication extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
+    	
+    	stage = primaryStage;
         
     	// Inicialização necessária para pressionar o botão ao teclar ENTER
         new EnableButtonEnterKey();
@@ -59,7 +61,7 @@ public class CasiAplication extends Application {
 
         primaryStage.setTitle("CASI Aplication");
         primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.show();
         primaryStage.setMaximized(true);
 
@@ -89,40 +91,17 @@ public class CasiAplication extends Application {
         .setDelayTime(Duration.millis(200))
         .setDuration(Duration.millis(500))
         .play();
-        /*Parent root = new FXMLLoader(getClass().getResource("/casiaplication/view/FXMLMain.fxml")).load();
-        root.setEffect(new BoxBlur());
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.TRANSPARENT);
-        this.stage = stage;        
-        initMain();
-       */
-        
-    }
-    /*public void initMain() throws IOException{
-    	
-    	AnchorPane loginParent = FXMLLoader.load(getClass().getResource("/casiaplication/view/FXMLLogin.fxml"));
-        Scene loginScene = new Scene(loginParent);
-        //Stage app_stage = (Stage) ((Node)enterLogin.getSource()).getScene().getWindow();
-        stage.setScene(loginScene);
-        stage.show();
-			           
-		                
-		
     }
     
-   /* public static void changeScreen(String scr){
-        switch (scr){
-            case "main":
-                stage.setScene(mainScene);
-               
-                break;
-            case "enter":
-                stage.setScene(mainScene);
-        }
+    public static void changeScreen(String scr, String root) {
+    	switch (scr){
+    		case "evento":
+    			
+    			break;
+    		case "detalhes":
+    			break;
+    	}
     }
-    */
     
     /**
      * @param args the command line arguments
@@ -140,5 +119,6 @@ public class CasiAplication extends Application {
         }
     
     }
+    
 }
 

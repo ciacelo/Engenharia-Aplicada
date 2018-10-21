@@ -43,5 +43,10 @@ public class FXMLMainController {
        
     }
     
+    @FXML
+    private void tarefas(MouseEvent event) {
+    	LoadRoot.loadScene("/casiaplication/view/FXMLTarefas", getClass());
+    }
+    
 
 }

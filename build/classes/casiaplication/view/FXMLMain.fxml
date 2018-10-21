@@ -33,7 +33,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="btnTaref" buttonType="RAISED" onMouseClicked="#eventos" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Tarefas" textFill="WHITE">
+                  <JFXButton fx:id="btnTaref" buttonType="RAISED" onMouseClicked="#tarefas" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Tarefas" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Semibold" size="16.0" />
                      </font>

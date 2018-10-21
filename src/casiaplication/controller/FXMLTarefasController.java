@@ -5,9 +5,9 @@ package casiaplication.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import casiaplication.model.database.EventCSVService;
+import casiaplication.model.database.TarefaCSVService;
 import casiaplication.model.database.EventService;
-import casiaplication.model.domain.Evento;
+import casiaplication.model.domain.Tarefa;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -28,20 +28,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 *
 * @author ciacelo
 */
-public class FXMLEventController implements Initializable{
+public class FXMLTarefasController implements Initializable{
 
 
 
 
 
 		@FXML
-		private TableView<Evento> tblEventos;
+		private TableView<Tarefa> tblTarefas;
 		@FXML
-		private TableColumn<Evento, String> clNome;
+		private TableColumn<Tarefa, String> clNome;
 		@FXML
-		private TableColumn<Evento, String> clDesc;
+		private TableColumn<Tarefa, String> clDesc;
 		@FXML
-		private TableColumn<Evento, Date> clData;
+		private TableColumn<Tarefa, Date> clData;
 		@FXML
 		private TextField txtNome;
 		@FXML
@@ -60,12 +60,12 @@ public class FXMLEventController implements Initializable{
 	    @FXML 
 	    private AnchorPane anchorPane;
 
-		private EventCSVService service;
+		private TarefaCSVService service;
 
 //		 Esse método é chamado ao inicializar a aplicação, igual um construtor. Ele vem da interface Initializable
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			service = new EventCSVService();
+			service = new TarefaCSVService();
 			configuraColunas();
 			configuraBindings();
 			atualizaDadosTabela();
@@ -75,30 +75,30 @@ public class FXMLEventController implements Initializable{
 		
 		@FXML
 		public void salvar() {
-			Evento e = new Evento();
-			pegaValores(e);
-			service.salvar(e);
+			Tarefa t = new Tarefa();
+			pegaValores(t);
+			service.salvar(t);
 			atualizaDadosTabela();
 		}
 
 		@FXML
 		public void atualizar() {
-			Evento e = tblEventos.getSelectionModel().getSelectedItem();
-			pegaValores(e);
-			service.atualizar(e);
+			Tarefa t = tblTarefas.getSelectionModel().getSelectedItem();
+			pegaValores(t);
+			service.atualizar(t);
 			atualizaDadosTabela();
 		}
 
 		@FXML
 		public void apagar() {
-			Evento e = tblEventos.getSelectionModel().getSelectedItem();
-			service.apagar(e.getId());
+			Tarefa t = tblTarefas.getSelectionModel().getSelectedItem();
+			service.apagar(t.getId());
 			atualizaDadosTabela();
 		}
 
 		@FXML
 		public void limpar() {
-			tblEventos.getSelectionModel().select(null);
+			tblTarefas.getSelectionModel().select(null);
 			txtNome.setText("");
 			txtDesc.setText("");
 			dpData.setValue(null);
@@ -107,10 +107,10 @@ public class FXMLEventController implements Initializable{
 		// métodos privados do controller
 
 		// pega os valores entrados pelo usuário e adiciona no objeto conta
-		private void pegaValores(Evento e) {
-			e.setNome(txtNome.getText());
-			e.setDescricao(txtDesc.getText());
-			e.setData(dataSelecionada());
+		private void pegaValores(Tarefa t) {
+			t.setNome(txtNome.getText());
+			t.setDescricao(txtDesc.getText());
+			t.setData(dataSelecionada());
 		}
 
 		// método utilitário para pega a data que foi selecionada (que usa o tipo novo do java 8 LocalDateTime)
@@ -121,11 +121,11 @@ public class FXMLEventController implements Initializable{
 
 		// chamado quando acontece alguma operação de atualização dos dados
 		private void atualizaDadosTabela() {
-			tblEventos.getItems().setAll(service.buscarTodas());
+			tblTarefas.getItems().setAll(service.buscarTodas());
 			limpar();
 		}
 
-		// configura as colunas para mostrar as propriedades da classe Evento
+		// configura as colunas para mostrar as propriedades da classe Tarefa
 		private void configuraColunas() {
 			clNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
 			clDesc.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
@@ -138,7 +138,7 @@ public class FXMLEventController implements Initializable{
 			BooleanBinding camposPreenchidos = txtNome.textProperty().isEmpty().or(txtDesc.textProperty().isEmpty())
 					.or(dpData.valueProperty().isNull());
 			// indica se há algo selecionado na tabela
-			BooleanBinding algoSelecionado = tblEventos.getSelectionModel().selectedItemProperty().isNull();
+			BooleanBinding algoSelecionado = tblTarefas.getSelectionModel().selectedItemProperty().isNull();
 			// alguns botões só são habilitados se algo foi selecionado na tabela
 			btnApagar.disableProperty().bind(algoSelecionado);
 			btnAtualizar.disableProperty().bind(algoSelecionado);
@@ -147,7 +147,7 @@ public class FXMLEventController implements Initializable{
 			btnSalvar.disableProperty().bind(algoSelecionado.not().or(camposPreenchidos));
 			// quando algo é selecionado na tabela, preenchemos os campos de entrada com os valores para o 
 			// usuário editar
-			tblEventos.getSelectionModel().selectedItemProperty().addListener((b, o, n) -> {
+			tblTarefas.getSelectionModel().selectedItemProperty().addListener((b, o, n) -> {
 				if (n != null) {
 					LocalDate data = null;
 					data = n.getData().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -159,3 +159,5 @@ public class FXMLEventController implements Initializable{
 		}
 
 }
+
+

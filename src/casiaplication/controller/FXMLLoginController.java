@@ -63,7 +63,6 @@ public class FXMLLoginController implements Initializable {
             String user = txtUserName.getText();
             String pass = txtPassword.getText();
             if(user.equals("c")&& pass.equals("c")){
-                JOptionPane.showMessageDialog(null, "Seja Bem-vindo.");
 
                 new FadeOutDownTransition(anchorPane)
                 .setOnFinish((e) -> {

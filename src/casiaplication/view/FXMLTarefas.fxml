@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLTarefasController">
+   <children>
+      <VBox alignment="CENTER" layoutX="26.0" layoutY="16.0" prefHeight="565.0" prefWidth="795.0" spacing="40.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="794.0" text="Tarefas" textFill="#e1641c">
+               <font>
+                  <Font name="Segoe UI Light" size="37.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <TableView fx:id="tblTarefas" prefHeight="340.0" prefWidth="795.0">
+               <columns>
+                  <TableColumn fx:id="clNome" prefWidth="193.0" text="Nome  da Tarefa" />
+                  <TableColumn fx:id="clDesc" prefWidth="390.0" text="Descriçao" />
+                  <TableColumn fx:id="clData" prefWidth="211.0" text="Data do Término" />
+               </columns>
+            </TableView>
+            <HBox spacing="20.0">
+               <children>
+                  <TextField fx:id="txtNome" promptText="Nome da Tarefa" />
+                  <TextField fx:id="txtDesc" promptText="Descrição" />
+                  <DatePicker fx:id="dpData" promptText="Data do Término" />
+               </children>
+            </HBox>
+            <HBox prefHeight="54.0" prefWidth="795.0" spacing="15.0">
+               <children>
+                  <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
+                  <Button fx:id="btnAtualizar" mnemonicParsing="false" onAction="#atualizar" text="Atualizar" />
+                  <Button fx:id="btnApagar" mnemonicParsing="false" onAction="#apagar" text="Apagar" />
+                  <Button fx:id="btnLimpart" mnemonicParsing="false" onAction="#limpar" text="Limpar" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

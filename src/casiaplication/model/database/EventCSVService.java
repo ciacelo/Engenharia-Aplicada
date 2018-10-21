@@ -2,6 +2,7 @@ package casiaplication.model.database;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.nio.charset.CodingErrorAction;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.FileAttribute;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -105,6 +107,9 @@ public class EventCSVService implements EventService{
 				}
 				
 				try {
+					//Files.delete(ARQUIVO_SAIDA);
+					//Files.(ARQUIVO_SAIDA, attrs);
+					System.out.println(sb.toString());
 					Files.write(ARQUIVO_SAIDA, sb.toString().getBytes());
 				} catch (IOException e) {
 					e.printStackTrace();

@@ -1,29 +1,49 @@
 package casiaplication.model.domain;
 
 public class Endereco {
+	
+	private String logradouro;
+	private String numero;
+	private String cidade;
+	private String estado;
 
 	public Endereco(String logradouro, String numero, String cidade, String estado) {
-		// TODO Auto-generated constructor stub
+		this.logradouro = logradouro;
+		this.numero = numero;
+		this.cidade = cidade;
+		this.estado = estado;
+	}
+	
+	public String getLogradouro() {
+		return logradouro;
 	}
 
-	public String getLogradouro() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
 	public String getNumero() {
-		// TODO Auto-generated method stub
-		return null;
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	public String getCidade() {
-		// TODO Auto-generated method stub
-		return null;
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
 	public String getEstado() {
-		// TODO Auto-generated method stub
-		return null;
+		return estado;
 	}
 
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
 }

@@ -8,16 +8,12 @@ package casiaplication;
 
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
 
 import com.sun.javafx.scene.control.behavior.ButtonBehavior;
 import com.sun.javafx.scene.control.behavior.KeyBinding;
 import casiaplication.componentes.*;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.AnchorPane;
@@ -25,14 +21,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.control.Button;
-import javafx.scene.effect.BoxBlur;
 import static javafx.scene.input.KeyCode.ENTER;
 import static javafx.scene.input.KeyEvent.KEY_PRESSED;
 import static javafx.scene.input.KeyEvent.KEY_RELEASED;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 
@@ -63,7 +55,7 @@ public class CasiAplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.show();
-        primaryStage.setMaximized(true);
+ 
 
         // Carregando a tela de login
         AnchorPane rootLogin = new FXMLLoader(getClass().getResource("/casiaplication/view/FXMLLogin.fxml")).load();

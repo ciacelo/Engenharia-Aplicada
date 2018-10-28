@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="633.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLMainReturn">
+   <children>
+      <HBox alignment="CENTER" layoutX="88.0" layoutY="262.0" prefHeight="125.0" prefWidth="539.0" spacing="80.0">
+         <children>
+            <ImageView fx:id="iconTaref" fitHeight="64.0" fitWidth="50.0" onMouseClicked="#openTaref" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../imagens/Imagens/icons8-gerenciamento-de-eventos-filled-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="iconEvents" fitHeight="50.0" fitWidth="48.0" onMouseClicked="#openEvents" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../imagens/Imagens/icons8-hora-extra-filled-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="iconDoc" fitHeight="50.0" fitWidth="46.0" onMouseClicked="#openDoc" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../imagens/Imagens/icons8-pasta-de-documentos-filled-50.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow />
+         </effect>
+      </HBox>
+      <Label layoutX="220.0" layoutY="83.0" prefHeight="121.0" prefWidth="339.0" text="CA System" textFill="#2a2a2c">
+         <font>
+            <Font name="System Bold Italic" size="64.0" />
+         </font>
+         <effect>
+            <Bloom threshold="0.13" />
+         </effect>
+      </Label>
+      <Label layoutX="334.0" layoutY="387.0" text="Eventos">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label layoutX="209.0" layoutY="387.0" text="Tarefas">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label layoutX="450.0" layoutY="387.0" text="Documentos">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+   </children>
+</AnchorPane>

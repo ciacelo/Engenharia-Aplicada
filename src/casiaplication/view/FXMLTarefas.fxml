@@ -13,10 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLTarefasController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLTarefasController">
    <children>
-      <VBox alignment="CENTER" layoutX="26.0" layoutY="16.0" prefHeight="565.0" prefWidth="795.0" spacing="40.0">
+      <VBox alignment="CENTER" layoutX="26.0" layoutY="16.0" prefHeight="565.0" prefWidth="782.0" spacing="40.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="794.0" text="Tarefas" textFill="#e1641c">
                <font>
@@ -26,7 +25,7 @@
                   <DropShadow />
                </effect>
             </Label>
-            <TableView fx:id="tblTarefas" prefHeight="340.0" prefWidth="795.0">
+            <TableView fx:id="tblTarefas" prefHeight="326.0" prefWidth="677.0">
                <columns>
                   <TableColumn fx:id="clNome" prefWidth="193.0" text="Nome  da Tarefa" />
                   <TableColumn fx:id="clDesc" prefWidth="390.0" text="Descriçao" />

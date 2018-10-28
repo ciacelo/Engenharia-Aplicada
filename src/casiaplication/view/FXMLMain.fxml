@@ -2,22 +2,25 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLMainController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLMainController">
    <left>
       <AnchorPane prefHeight="511.0" prefWidth="178.0" style="-fx-background-color: orange;" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER" layoutX="8.0" layoutY="37.0" prefHeight="445.0" prefWidth="163.0" spacing="2.0" style="-fx-padding: 4px;">
                <children>
-                  <ImageView fitHeight="72.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="iconMenu" fitHeight="72.0" fitWidth="87.0" onMouseClicked="#retornaMenu" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../imagens/Imagens/icon.png" />
                      </image>
@@ -38,22 +41,17 @@
                         <Font name="Segoe UI Semibold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnDoc" buttonType="RAISED" onMouseClicked="#eventos" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Documentos" textFill="WHITE">
+                  <JFXButton fx:id="btnDoc" buttonType="RAISED" onMouseClicked="#documents" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Documentos" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Semibold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnPlan" buttonType="RAISED" onMouseClicked="#eventos" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Planilhas" textFill="WHITE">
+                  <JFXButton fx:id="btnFin" buttonType="RAISED" onMouseClicked="#financas" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Finanças" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Semibold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnFin" buttonType="RAISED" onMouseClicked="#eventos" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Finanças" textFill="WHITE">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="16.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="btnOther" buttonType="RAISED" onMouseClicked="#eventos" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Outros" textFill="WHITE">
+                  <JFXButton fx:id="btnOther" buttonType="RAISED" onMouseClicked="#eventos" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Usuários" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Semibold" size="16.0" />
                      </font>
@@ -73,9 +71,68 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="610.0" prefWidth="788.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="610.0" prefWidth="754.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <HBox alignment="CENTER" layoutX="130.0" layoutY="262.0" prefHeight="125.0" prefWidth="539.0" spacing="80.0">
+               <children>
+                  <ImageView fx:id="iconTaref" fitHeight="64.0" fitWidth="50.0" onMouseClicked="#openTaref" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../imagens/Imagens/icons8-gerenciamento-de-eventos-filled-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="iconEvents" fitHeight="50.0" fitWidth="48.0" onMouseClicked="#openEvents" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../imagens/Imagens/icons8-hora-extra-filled-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="iconDoc" fitHeight="50.0" fitWidth="46.0" onMouseClicked="#openDoc" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../imagens/Imagens/icons8-pasta-de-documentos-filled-50.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </HBox>
+            <Label layoutX="255.0" layoutY="82.0" prefHeight="121.0" prefWidth="339.0" text="CA System" textFill="#2a2a2c">
+               <font>
+                  <Font name="System Bold Italic" size="64.0" />
+               </font>
+               <effect>
+                  <Bloom threshold="0.13" />
+               </effect>
+            </Label>
+            <Label layoutX="376.0" layoutY="387.0" text="Eventos">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label layoutX="247.0" layoutY="387.0" text="Tarefas">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label layoutX="490.0" layoutY="387.0" text="Documentos">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
          </children></AnchorPane>
    </center>
 </BorderPane>

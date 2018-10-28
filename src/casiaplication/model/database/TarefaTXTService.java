@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 
 import casiaplication.model.domain.Tarefa;
 
-public class TarefaCSVService implements TarefaService{
+public class TarefaTXTService implements TarefaService{
 
 	// divisor de colunas no arquivo
 			private static final String SEPARADOR = ";";
@@ -37,7 +37,7 @@ public class TarefaCSVService implements TarefaService{
 			// formato de data usado no arquivo
 			final SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-			public TarefaCSVService() {
+			public TarefaTXTService() {
 				carregaDados();
 			}
 
@@ -74,14 +74,14 @@ public class TarefaCSVService implements TarefaService{
 						.orElseThrow(() -> new Error("Tarefa não encontrado"));
 			}
 
-			// salva a lista de dados no arquivo, gerando um novo CSV e escrevendo o arquivo completamente
+			// salva a lista de dados no arquivo, gerando um novo TXT e escrevendo o arquivo completamente
 			private void salvaDados() {
 				
 				FileInputStream input;
 			    String result = null;
 			    try {
 			        input = new FileInputStream(new File("src/tarefas.txt"));
-			        CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
+			        CharsetDecoder decoder = Charset.forName("Cp1252").newDecoder();
 			        decoder.onMalformedInput(CodingErrorAction.IGNORE);
 			        InputStreamReader reader = new InputStreamReader(input, decoder);
 			        BufferedReader bufferedReader = new BufferedReader( reader );
@@ -129,14 +129,14 @@ public class TarefaCSVService implements TarefaService{
 						Files.createFile(ARQUIVO_SAIDA);
 					}
 		
-					tarefas = Files.lines(ARQUIVO_SAIDA).map(this::leLinha).collect(Collectors.toList());
+					tarefas = Files.lines(ARQUIVO_SAIDA, Charset.forName("Cp1252")).map(this::leLinha).collect(Collectors.toList());
 				} catch (IOException e) {
 					e.printStackTrace();
 					System.exit(0);
 				}
 			}
 			
-			// transforma uma linha do CSV para o tipo Tarefa
+			// transforma uma linha do TXT para o tipo Tarefa
 			private Tarefa leLinha(String linha) {
 				String colunas[] = linha.split(SEPARADOR);
 				int id = Integer.parseInt(colunas[0]);
@@ -155,7 +155,7 @@ public class TarefaCSVService implements TarefaService{
 				return tarefa;
 			}
 			
-			// transforma um objeto conta em um arquivo CSV
+			// transforma um objeto conta em um arquivo TXT
 			private String criaLinha(Tarefa e) {
 				String dataStr = formatoData.format(e.getData());
 				String idStr = String.valueOf(e.getId());

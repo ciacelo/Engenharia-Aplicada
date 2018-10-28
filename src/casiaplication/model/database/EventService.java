@@ -1,8 +1,8 @@
 package casiaplication.model.database;
 
-import casiaplication.model.domain.Evento;
-import casiaplication.model.database.EventCSVService;
 import java.util.List;
+
+import casiaplication.model.domain.Evento;
 
 public interface EventService {
 	
@@ -23,9 +23,6 @@ public interface EventService {
 	
 	
 	
-	//public static EventService getNewInstance() {
-		//return new EventCSVService();
-	//}
 
 }
 

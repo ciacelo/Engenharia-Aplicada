@@ -5,8 +5,7 @@ package casiaplication.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import casiaplication.model.database.TarefaCSVService;
-import casiaplication.model.database.EventService;
+import casiaplication.model.database.TarefaTXTService;
 import casiaplication.model.domain.Tarefa;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -60,12 +59,12 @@ public class FXMLTarefasController implements Initializable{
 	    @FXML 
 	    private AnchorPane anchorPane;
 
-		private TarefaCSVService service;
+		private TarefaTXTService service;
 
 //		 Esse método é chamado ao inicializar a aplicação, igual um construtor. Ele vem da interface Initializable
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			service = new TarefaCSVService();
+			service = new TarefaTXTService();
 			configuraColunas();
 			configuraBindings();
 			atualizaDadosTabela();

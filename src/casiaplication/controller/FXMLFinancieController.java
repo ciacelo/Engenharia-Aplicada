@@ -5,9 +5,9 @@ package casiaplication.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import casiaplication.model.database.EventTXTService;
-import casiaplication.model.database.EventService;
-import casiaplication.model.domain.Evento;
+import casiaplication.model.database.FinancieXlsxService;
+import casiaplication.model.database.FinancieService;
+import casiaplication.model.domain.Financie;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -28,22 +28,26 @@ import javafx.scene.control.cell.PropertyValueFactory;
 *
 * @author ciacelo
 */
-public class FXMLEventController implements Initializable{
+public class FXMLFinancieController implements Initializable{
 
 
 
 
 
 		@FXML
-		private TableView<Evento> tblEventos;
+		private TableView<Financie> tblFinancies;
 		@FXML
-		private TableColumn<Evento, String> clNome;
+		private TableColumn<Financie, String> clGastou;
 		@FXML
-		private TableColumn<Evento, String> clDesc;
+		private TableColumn<Financie, String> clEntrou;
 		@FXML
-		private TableColumn<Evento, Date> clData;
+		private TableColumn<Financie, String> clDesc;
 		@FXML
-		private TextField txtNome;
+		private TableColumn<Financie, Date> clData;
+		@FXML
+		private TextField txtGastou;
+		@FXML
+		private TextField txtEntrou;
 		@FXML
 		private TextField txtDesc;
 		@FXML
@@ -60,12 +64,12 @@ public class FXMLEventController implements Initializable{
 	    @FXML 
 	    private AnchorPane anchorPane;
 
-		private EventTXTService service;
+		private FinancieXlsxService service;
 
 //		 Esse método é chamado ao inicializar a aplicação, igual um construtor. Ele vem da interface Initializable
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			service = new EventTXTService();
+			service = new FinancieXlsxService();
 			configuraColunas();
 			configuraBindings();
 			atualizaDadosTabela();
@@ -75,45 +79,47 @@ public class FXMLEventController implements Initializable{
 		
 		@FXML
 		public void salvar() {
-			Evento e = new Evento();
-			pegaValores(e);
-			service.salvar(e);
+			Financie f = new Financie();
+			pegaValores(f);
+			service.salvar(f);
 			atualizaDadosTabela();
 		}
 
 		@FXML
 		public void atualizar() {
-			Evento e = tblEventos.getSelectionModel().getSelectedItem();
-			pegaValores(e);
-			service.atualizar(e);
+			Financie f = tblFinancies.getSelectionModel().getSelectedItem();
+			pegaValores(f);
+			service.atualizar(f);
 			atualizaDadosTabela();
 		}
 
 		@FXML
 		public void apagar() {
-			Evento e = tblEventos.getSelectionModel().getSelectedItem();
-			service.apagar(e.getId());
+			Financie f = tblFinancies.getSelectionModel().getSelectedItem();
+			service.apagar(f.getId());
 			atualizaDadosTabela();
 		}
 
 		@FXML
 		public void limpar() {
-			tblEventos.getSelectionModel().select(null);
-			txtNome.setText("");
-			txtDesc.setText("");
+			tblFinancies.getSelectionModel().select(null);
 			dpData.setValue(null);
+			txtDesc.setText("");
+			txtGastou.setText("");
+			txtEntrou.setText("");
 		}
 		
 		// métodos privados do controller
 
-		// pega os valores entrados pelo usuário e adiciona no objeto conta
-		private void pegaValores(Evento e) {
-			e.setNome(txtNome.getText());
-			e.setDescricao(txtDesc.getText());
-			e.setData(dataSelecionada());
+		// pega os valores entrados pelo usuário eadiciona no objeto conta
+		private void pegaValores(Financie f) {
+			f.setData(dataSelecionada());
+			f.setDescricao(txtDesc.getText());
+			f.setEntrou(txtEntrou.getText());
+			f.setGastou(txtGastou.getText());
 		}
 
-		// método utilitário para pega a data que foi selecionada (que usa o tipo novo do java 8 LocalDateTime)
+		// método utilitário para pega a data que eoi selecionada (que usa o tipo novo do java 8 LocalDateTime)
 		private Date dataSelecionada() {
 			LocalDateTime time = dpData.getValue().atStartOfDay();
 			return Date.from(time.atZone(ZoneId.systemDefault()).toInstant());
@@ -121,39 +127,43 @@ public class FXMLEventController implements Initializable{
 
 		// chamado quando acontece alguma operação de atualização dos dados
 		private void atualizaDadosTabela() {
-			tblEventos.getItems().setAll(service.buscarTodas());
+			tblFinancies.getItems().setAll(service.buscarTodas());
 			limpar();
 		}
 
-		// configura as colunas para mostrar as propriedades da classe Evento
+		// configura as colunas para mostrar as propriedades da classe einancie
 		private void configuraColunas() {
-			clNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-			clDesc.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
 			clData.setCellValueFactory(new PropertyValueFactory<>("Data"));
+			clDesc.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
+			clGastou.setCellValueFactory(new PropertyValueFactory<>("Gastou"));
+			clEntrou.setCellValueFactory(new PropertyValueFactory<>("Entrou"));
+			
 		}
 
 		// configura a lógica da tela
 		private void configuraBindings() {
-			// esse binding só e false quando os campos da tela estão preenchidos
-			BooleanBinding camposPreenchidos = txtNome.textProperty().isEmpty().or(txtDesc.textProperty().isEmpty())
-					.or(dpData.valueProperty().isNull());
+			// esse binding só efalse quando os campos da tela estão preenchidos
+			BooleanBinding camposPreenchidos = dpData.valueProperty().isNull().or(txtDesc.textProperty().isEmpty()).
+					or(txtGastou.textProperty().isNull()).or(txtEntrou.textProperty().isNull());
+					
 			// indica se há algo selecionado na tabela
-			BooleanBinding algoSelecionado = tblEventos.getSelectionModel().selectedItemProperty().isNull();
-			// alguns botões só são habilitados se algo foi selecionado na tabela
+			BooleanBinding algoSelecionado = tblFinancies.getSelectionModel().selectedItemProperty().isNull();
+			// alguns botões só são habilitados se algo eoi selecionado na tabela
 			btnApagar.disableProperty().bind(algoSelecionado);
 			btnAtualizar.disableProperty().bind(algoSelecionado);
 			btnLimpart.disableProperty().bind(algoSelecionado);
-			// o botão salvar só é habilitado se as informações foram preenchidas e não tem nada na tela
+			// o botão salvar só é habilitado se as informações eoram preenchidas e não tem nada na tela
 			btnSalvar.disableProperty().bind(algoSelecionado.not().or(camposPreenchidos));
 			// quando algo é selecionado na tabela, preenchemos os campos de entrada com os valores para o 
 			// usuário editar
-			tblEventos.getSelectionModel().selectedItemProperty().addListener((b, o, n) -> {
+			tblFinancies.getSelectionModel().selectedItemProperty().addListener((b, o, n) -> {
 				if (n != null) {
 					LocalDate data = null;
 					data = n.getData().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-					txtNome.setText(n.getNome());
+					txtGastou.setText(n.getGastou());
 					txtDesc.setText(n.getDescricao());
 					dpData.setValue(data);
+					txtEntrou.setText(n.getEntrou());
 				}
 			});
 		}

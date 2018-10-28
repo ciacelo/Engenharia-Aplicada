@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLEventController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLFinancieController">
    <children>
       <VBox layoutX="16.0" layoutY="6.0" prefHeight="565.0" prefWidth="763.0" spacing="40.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="772.0" text="Eventos" textFill="#e1641c">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="772.0" text="Planilha" textFill="#e1641c">
                <font>
                   <Font name="Segoe UI Light" size="37.0" />
                </font>
@@ -25,18 +25,20 @@
                   <DropShadow />
                </effect>
             </Label>
-            <TableView fx:id="tblEventos" prefHeight="226.0" prefWidth="741.0">
-              <columns>
-                <TableColumn fx:id="clNome" prefWidth="174.0" text="Nome  do Evento" />
-                <TableColumn fx:id="clDesc" prefWidth="422.0" text="Descriçao" />
-                  <TableColumn fx:id="clData" prefWidth="166.0" text="Data" />
-              </columns>
+            <TableView fx:id="tblFinancies" prefHeight="331.0" prefWidth="763.0">
+               <columns>
+                  <TableColumn fx:id="clData" prefWidth="173.0" text="Data" />
+                  <TableColumn fx:id="clDesc" prefWidth="320.0" text="Descrição" />
+                  <TableColumn fx:id="clGastou" prefWidth="141.0" text="Gastou R$" />
+                  <TableColumn fx:id="clEntrou" prefWidth="128.0" text="Entrou R$" />
+               </columns>
             </TableView>
             <HBox spacing="20.0">
                <children>
-                  <TextField fx:id="txtNome" promptText="Nome " />
+                  <DatePicker fx:id="dpData" promptText="Data " />
                   <TextField fx:id="txtDesc" promptText="Descrição" />
-                  <DatePicker fx:id="dpData" promptText="Data Vencimento" />
+                  <TextField fx:id="txtGastou" promptText="Gastou R$" />
+                  <TextField fx:id="txtEntrou" promptText="Entrou R$ " />
                </children>
             </HBox>
             <HBox prefHeight="54.0" prefWidth="795.0" spacing="15.0">

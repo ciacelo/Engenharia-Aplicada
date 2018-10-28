@@ -26,9 +26,9 @@ import javax.swing.JOptionPane;
 import casiaplication.model.domain.Evento;
 
 
-public class EventCSVService implements EventService{
-
-
+public class EventTXTService implements EventService{
+ 
+		
 		// divisor de colunas no arquivo
 		private static final String SEPARADOR = ";";
 
@@ -42,7 +42,7 @@ public class EventCSVService implements EventService{
 		// formato de data usado no arquivo
 		final SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-		public EventCSVService() {
+		public EventTXTService() {
 			carregaDados();
 		}
 
@@ -80,14 +80,14 @@ public class EventCSVService implements EventService{
 					.orElseThrow(() -> new Error("Evento não encontrado"));
 		}
 
-		// salva a lista de dados no arquivo, gerando um novo CSV e escrevendo o arquivo completamente
+		// salva a lista de dados no arquivo, gerando um novo TXT e escrevendo o arquivo completamente
 		private void salvaDados() {
 			
 			FileInputStream input;
 		    String result = null;
 		    try {
 		        input = new FileInputStream(new File("src/documento.txt"));
-		        CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
+		        CharsetDecoder decoder = Charset.forName("Cp1252").newDecoder();
 		        decoder.onMalformedInput(CodingErrorAction.IGNORE);
 		        InputStreamReader reader = new InputStreamReader(input, decoder);
 		        BufferedReader bufferedReader = new BufferedReader( reader );
@@ -135,14 +135,14 @@ public class EventCSVService implements EventService{
 					Files.createFile(ARQUIVO_SAIDA);
 				}
 	
-				events = Files.lines(ARQUIVO_SAIDA).map(this::leLinha).collect(Collectors.toList());
+				events = Files.lines(ARQUIVO_SAIDA, Charset.forName("Cp1252")).map(this::leLinha).collect(Collectors.toList());
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.exit(0);
 			}
 		}
 		
-		// transforma uma linha do CSV para o tipo Evento
+		// transforma uma linha do TXT para o tipo Evento
 		private Evento leLinha(String linha) {
 			String colunas[] = linha.split(SEPARADOR);
 			int id = Integer.parseInt(colunas[0]);
@@ -161,7 +161,7 @@ public class EventCSVService implements EventService{
 			return event;
 		}
 		
-		// transforma um objeto conta em um arquivo CSV
+		// transforma um objeto conta em um arquivo TXT
 		private String criaLinha(Evento e) {
 			String dataStr = formatoData.format(e.getData());
 			String idStr = String.valueOf(e.getId());

@@ -94,10 +94,10 @@ public class EventTXTService implements EventService{
 		        StringBuilder sb = new StringBuilder();
 		        String line = bufferedReader.readLine();
 		        
-		        while( line != null ) {
+		        /*while( line != null ) {
 		            sb.append( line );
 		            line = bufferedReader.readLine();
-		        }
+		        }*/
 		        bufferedReader.close();
 		        result = sb.toString();
 				for (Evento e : events) {

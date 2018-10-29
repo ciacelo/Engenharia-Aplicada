@@ -28,9 +28,9 @@
             <TableView fx:id="tblAtividades" prefHeight="416.0" prefWidth="734.0">
                <columns>
                   <TableColumn fx:id="clTitulo" prefWidth="128.0" text="Titulo da tarefa" />
-                  <TableColumn fx:id="clDesc" prefWidth="253.0" text="Descriçao" />
-                  <TableColumn fx:id="clResp" prefWidth="125.0" text="Responsável" />
-                  <TableColumn fx:id="clData" minWidth="0.0" prefWidth="127.0" text="Prazo da tarefa" />
+                  <TableColumn fx:id="clDesc" prefWidth="213.0" text="Descriçao" />
+                  <TableColumn fx:id="clResp" prefWidth="171.0" text="Responsável" />
+                  <TableColumn fx:id="clData" minWidth="0.0" prefWidth="121.0" text="Prazo da tarefa" />
                   <TableColumn fx:id="clDecor" maxWidth="155.0" prefWidth="223.0" text="Decorrência" />
                </columns>
             </TableView>

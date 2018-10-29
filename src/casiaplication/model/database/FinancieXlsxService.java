@@ -32,7 +32,7 @@ public class FinancieXlsxService implements FinancieService{
 	private static final Path ARQUIVO_SAIDA = Paths.get("src/Planilha.xlsx");
 
 	// os dados do arquivo
-	private List<Financie> Financies;
+	private List<Financie> financies;
 
 	// formato de data usado no arquivo
 	final SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
@@ -45,37 +45,37 @@ public class FinancieXlsxService implements FinancieService{
 	}
 
 	@Override
-	public void salvar(Financie Financie) {
-		Financie.setId(ultimoId() + 1);
-		Financies.add(Financie);
+	public void salvar(Financie financie) {
+		financie.setId(ultimoId() + 1);
+		financies.add(financie);
 		salvaDados();
 	}
 
 
 	@Override
-	public void atualizar(Financie Financie) {
-		Financie FinancieAntiga = buscaPorId(Financie.getId());
-		FinancieAntiga.setData(Financie.getData());
-		FinancieAntiga.setDescricao(Financie.getDescricao());
-		FinancieAntiga.setEntrou(Financie.getEntrou());
-		FinancieAntiga.setGastou(Financie.getGastou());
+	public void atualizar(Financie financie) {
+		Financie FinancieAntiga = buscaPorId(financie.getId());
+		FinancieAntiga.setData(financie.getData());
+		FinancieAntiga.setDescricao(financie.getDescricao());
+		FinancieAntiga.setEntrou(financie.getEntrou());
+		FinancieAntiga.setGastou(financie.getGastou());
 		salvaDados();
 	}
 
 	@Override
 	public List<Financie> buscarTodas() {
-		return Financies;
+		return financies;
 	}
 
 	@Override
 	public void apagar(int id) {
-		Financie Financie = buscaPorId(id);
-		Financies.remove(Financie);
+		Financie financie = buscaPorId(id);
+		financies.remove(financie);
 		salvaDados();
 	}
 
 	public Financie buscaPorId(int id) {
-		return Financies.stream().filter(e -> e.getId() == id).findFirst()
+		return financies.stream().filter(e -> e.getId() == id).findFirst()
 				.orElseThrow(() -> new Error("Financie não encontrado"));
 	}
 
@@ -100,7 +100,7 @@ public class FinancieXlsxService implements FinancieService{
 	        */
 	        bufferedReader.close();
 	        result = sb.toString();
-			for (Financie f : Financies) {
+			for (Financie f : financies) {
 				String linha = criaLinha(f);
 				sb.append(linha);
 				sb.append(System.getProperty("line.separator"));
@@ -125,7 +125,7 @@ public class FinancieXlsxService implements FinancieService{
 	
 	// o ID mais alto é retornado aqui para continuarmos contando os IDs
 	private int ultimoId() {
-		return Financies.stream().mapToInt(Financie::getId).max().orElse(0);
+		return financies.stream().mapToInt(Financie::getId).max().orElse(0);
 	}
 
 	// carrega os dados do arquivo para a lista Financies
@@ -136,7 +136,7 @@ public class FinancieXlsxService implements FinancieService{
 			}
 			
 			System.out.println(ARQUIVO_SAIDA);
-			Financies = Files.lines(ARQUIVO_SAIDA, charset)
+			financies = Files.lines(ARQUIVO_SAIDA, charset)
 					.map(this::leLinha)
 					.collect(Collectors.toList());
 		} catch (IOException e) {
@@ -156,21 +156,21 @@ public class FinancieXlsxService implements FinancieService{
 			e.printStackTrace();
 			System.exit(0);
 		}
-		Financie Financie = new Financie();
-		Financie.setId(id);
-		Financie.setData(data);
-		Financie.setDescricao(colunas[2]);
-		Financie.setGastou(colunas[3]);
-		Financie.setEntrou(colunas[3]);
-		return Financie;
+		Financie financie = new Financie();
+		financie.setId(id);
+		financie.setData(data);
+		financie.setDescricao(colunas[2]);
+		financie.setGastou(colunas[3]);
+		financie.setEntrou(colunas[4]);
+		return financie;
 	}
 	
 	// transforma um objeto conta em um arquivo Xlsx
 	private String criaLinha(Financie e) {
 		String dataStr = formatoData.format(e.getData());
 		String idStr = String.valueOf(e.getId());
-		String linha = String.join(SEPARADOR, idStr, dataStr,e.getDescricao(), e.getEntrou()
-				, e.getGastou());
+		String linha = String.join(SEPARADOR, idStr, dataStr,e.getDescricao(), e.getGastou()
+				, e.getEntrou());
 		return linha;
 	}
 	

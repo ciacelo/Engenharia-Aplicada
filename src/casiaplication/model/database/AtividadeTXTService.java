@@ -51,12 +51,12 @@ public class AtividadeTXTService implements AtividadefaService{
 
 			@Override
 			public void atualizar(Atividade atividade) {
-				Atividade AtividadeAntiga = buscaPorId(atividade.getId());
-				AtividadeAntiga.setTitulo(atividade.getTitulo());
-				AtividadeAntiga.setDescricao(atividade.getDescricao());
-				AtividadeAntiga.setResponsavel(atividade.getResponsavel());
-				AtividadeAntiga.setDecorrencia(atividade.getDecorrencia());
-				AtividadeAntiga.setData(atividade.getData());
+				Atividade atividadeAntiga = buscaPorId(atividade.getId());
+				atividadeAntiga.setTitulo(atividade.getTitulo());
+				atividadeAntiga.setDescricao(atividade.getDescricao());
+				atividadeAntiga.setResponsavel(atividade.getResponsavel());
+				atividadeAntiga.setDecorrencia(atividade.getDecorrencia());
+				atividadeAntiga.setData(atividade.getData());
 				salvaDados();
 			}
 
@@ -89,16 +89,16 @@ public class AtividadeTXTService implements AtividadefaService{
 			        InputStreamReader reader = new InputStreamReader(input, decoder);
 			        BufferedReader bufferedReader = new BufferedReader( reader );
 			        StringBuilder sb = new StringBuilder();
-			        String line = bufferedReader.readLine();
+			       //String line = bufferedReader.readLine();
 			        
-			        while( line != null ) {
-			            sb.append( line );
-			            line = bufferedReader.readLine();
-			        }
+			        //while( line != null ) {
+			          //  sb.append( line );
+			           // line = bufferedReader.readLine();
+			        //}
 			        bufferedReader.close();
 			        result = sb.toString();
-					for (Atividade e : atividades) {
-						String linha = criaLinha(e);
+					for (Atividade a : atividades) {
+						String linha = criaLinha(a);
 						sb.append(linha);
 						sb.append(System.getProperty("line.separator"));
 					}
@@ -150,16 +150,17 @@ public class AtividadeTXTService implements AtividadefaService{
 					e.printStackTrace();
 					System.exit(0);
 				}
-				Atividade Atividade = new Atividade();
-				Atividade.setId(id);
-				Atividade.setTitulo(colunas[1]);
-				Atividade.setDescricao(colunas[2]);
-				Atividade.setResponsavel(colunas[3]);
-				Atividade.setDecorrencia(colunas[5]);
-				return Atividade;
+				Atividade atividade = new Atividade();
+				atividade.setId(id);
+				atividade.setTitulo(colunas[1]);
+				atividade.setDescricao(colunas[2]);
+				atividade.setResponsavel(colunas[3]);
+				atividade.setData(data);
+				atividade.setDecorrencia(colunas[5]);
+				return atividade;
 			}
 			
-			// transforma um objeto conta em um arquivo TXT
+			// transforma um objeto atividade em um arquivo TXT
 			private String criaLinha(Atividade e) {
 				String dataStr = formatoData.format(e.getData());
 				String idStr = String.valueOf(e.getId());

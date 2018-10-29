@@ -82,24 +82,24 @@ public class FXMLAtividadesController implements Initializable{
 		
 		@FXML
 		public void salvar() {
-			Atividade t = new Atividade();
-			pegaValores(t);
-			service.salvar(t);
+			Atividade a = new Atividade();
+			pegaValores(a);
+			service.salvar(a);
 			atualizaDadosTabela();
 		}
 
 		@FXML
 		public void atualizar() {
-			Atividade t = tblAtividades.getSelectionModel().getSelectedItem();
-			pegaValores(t);
-			service.atualizar(t);
+			Atividade a = tblAtividades.getSelectionModel().getSelectedItem();
+			pegaValores(a);
+			service.atualizar(a);
 			atualizaDadosTabela();
 		}
 
 		@FXML
 		public void apagar() {
-			Atividade t = tblAtividades.getSelectionModel().getSelectedItem();
-			service.apagar(t.getId());
+			Atividade a = tblAtividades.getSelectionModel().getSelectedItem();
+			service.apagar(a.getId());
 			atualizaDadosTabela();
 		}
 
@@ -115,7 +115,7 @@ public class FXMLAtividadesController implements Initializable{
 		
 		// métodos privados do controller
 
-		// pega os valores entrados pelo usuário e adiciona no objeto conta
+		// pega os valores entrados pelo usuário e adiciona no objeto atividade
 		private void pegaValores(Atividade a) {
 			a.setTitulo(txtTitulo.getText());
 			a.setDescricao(txtDesc.getText());

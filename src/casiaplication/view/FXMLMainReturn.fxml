@@ -56,7 +56,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="209.0" layoutY="387.0" text="Tarefas">
+      <Label layoutX="194.0" layoutY="387.0" text="Atividades">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

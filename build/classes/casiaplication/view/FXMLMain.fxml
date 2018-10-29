@@ -36,7 +36,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="btnTaref" buttonType="RAISED" onMouseClicked="#tarefas" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Tarefas" textFill="WHITE">
+                  <JFXButton fx:id="btnAtiv" buttonType="RAISED" onMouseClicked="#atividades" prefHeight="50.0" prefWidth="247.0" ripplerFill="#dae4e5" text="Atividades" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Semibold" size="16.0" />
                      </font>
@@ -75,7 +75,7 @@
          <children>
             <HBox alignment="CENTER" layoutX="130.0" layoutY="262.0" prefHeight="125.0" prefWidth="539.0" spacing="80.0">
                <children>
-                  <ImageView fx:id="iconTaref" fitHeight="64.0" fitWidth="50.0" onMouseClicked="#openTaref" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="iconTaref" fitHeight="64.0" fitWidth="50.0" onMouseClicked="#openAtiv" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../imagens/Imagens/icons8-gerenciamento-de-eventos-filled-50.png" />
                      </image>
@@ -117,7 +117,7 @@
                   <DropShadow />
                </effect>
             </Label>
-            <Label layoutX="247.0" layoutY="387.0" text="Tarefas">
+            <Label layoutX="247.0" layoutY="387.0" text="Atividades">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

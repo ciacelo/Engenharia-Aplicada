@@ -5,8 +5,8 @@ package casiaplication.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import casiaplication.model.database.TarefaTXTService;
-import casiaplication.model.domain.Tarefa;
+import casiaplication.model.database.AtividadeTXTService;
+import casiaplication.model.domain.Atividade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -27,26 +27,34 @@ import javafx.scene.control.cell.PropertyValueFactory;
 *
 * @author ciacelo
 */
-public class FXMLTarefasController implements Initializable{
+public class FXMLAtividadesController implements Initializable{
 
 
 
 
 
 		@FXML
-		private TableView<Tarefa> tblTarefas;
+		private TableView<Atividade> tblAtividades;
 		@FXML
-		private TableColumn<Tarefa, String> clNome;
+		private TableColumn<Atividade, String> clTitulo;
 		@FXML
-		private TableColumn<Tarefa, String> clDesc;
+		private TableColumn<Atividade, String> clDesc;
 		@FXML
-		private TableColumn<Tarefa, Date> clData;
+		private TableColumn<Atividade, String> clResp;
 		@FXML
-		private TextField txtNome;
+		private TableColumn<Atividade, Date> clData;
+		@FXML
+		private TableColumn<Atividade, String> clDecor;
+		@FXML
+		private TextField txtTitulo;
+		@FXML
+		private TextField txtResp;
 		@FXML
 		private TextField txtDesc;
 		@FXML
 		private DatePicker dpData;
+		@FXML
+		private TextField txtDecor;
 		@FXML
 		private Button btnSalvar;
 		@FXML
@@ -59,12 +67,12 @@ public class FXMLTarefasController implements Initializable{
 	    @FXML 
 	    private AnchorPane anchorPane;
 
-		private TarefaTXTService service;
+		private AtividadeTXTService service;
 
 //		 Esse método é chamado ao inicializar a aplicação, igual um construtor. Ele vem da interface Initializable
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			service = new TarefaTXTService();
+			service = new AtividadeTXTService();
 			configuraColunas();
 			configuraBindings();
 			atualizaDadosTabela();
@@ -74,7 +82,7 @@ public class FXMLTarefasController implements Initializable{
 		
 		@FXML
 		public void salvar() {
-			Tarefa t = new Tarefa();
+			Atividade t = new Atividade();
 			pegaValores(t);
 			service.salvar(t);
 			atualizaDadosTabela();
@@ -82,7 +90,7 @@ public class FXMLTarefasController implements Initializable{
 
 		@FXML
 		public void atualizar() {
-			Tarefa t = tblTarefas.getSelectionModel().getSelectedItem();
+			Atividade t = tblAtividades.getSelectionModel().getSelectedItem();
 			pegaValores(t);
 			service.atualizar(t);
 			atualizaDadosTabela();
@@ -90,26 +98,30 @@ public class FXMLTarefasController implements Initializable{
 
 		@FXML
 		public void apagar() {
-			Tarefa t = tblTarefas.getSelectionModel().getSelectedItem();
+			Atividade t = tblAtividades.getSelectionModel().getSelectedItem();
 			service.apagar(t.getId());
 			atualizaDadosTabela();
 		}
 
 		@FXML
 		public void limpar() {
-			tblTarefas.getSelectionModel().select(null);
-			txtNome.setText("");
+			tblAtividades.getSelectionModel().select(null);
+			txtTitulo.setText("");
 			txtDesc.setText("");
+			txtResp.setText("");
 			dpData.setValue(null);
+			txtDecor.setText("");
 		}
 		
 		// métodos privados do controller
 
 		// pega os valores entrados pelo usuário e adiciona no objeto conta
-		private void pegaValores(Tarefa t) {
-			t.setNome(txtNome.getText());
-			t.setDescricao(txtDesc.getText());
-			t.setData(dataSelecionada());
+		private void pegaValores(Atividade a) {
+			a.setTitulo(txtTitulo.getText());
+			a.setDescricao(txtDesc.getText());
+			a.setResponsavel(txtResp.getText());
+			a.setData(dataSelecionada());
+			a.setDecorrencia(txtDecor.getText());
 		}
 
 		// método utilitário para pega a data que foi selecionada (que usa o tipo novo do java 8 LocalDateTime)
@@ -120,24 +132,26 @@ public class FXMLTarefasController implements Initializable{
 
 		// chamado quando acontece alguma operação de atualização dos dados
 		private void atualizaDadosTabela() {
-			tblTarefas.getItems().setAll(service.buscarTodas());
+			tblAtividades.getItems().setAll(service.buscarTodas());
 			limpar();
 		}
 
-		// configura as colunas para mostrar as propriedades da classe Tarefa
+		// configura as colunas para mostrar as propriedades da classe Atividade
 		private void configuraColunas() {
-			clNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+			clTitulo.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
 			clDesc.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
+			clResp.setCellValueFactory(new PropertyValueFactory<>("Responsável"));
 			clData.setCellValueFactory(new PropertyValueFactory<>("Data"));
+			clDecor.setCellValueFactory(new PropertyValueFactory<>("Decorrencia"));
 		}
 
 		// configura a lógica da tela
 		private void configuraBindings() {
 			// esse binding só e false quando os campos da tela estão preenchidos
-			BooleanBinding camposPreenchidos = txtNome.textProperty().isEmpty().or(txtDesc.textProperty().isEmpty())
-					.or(dpData.valueProperty().isNull());
+			BooleanBinding camposPreenchidos = txtTitulo.textProperty().isEmpty().or(txtDesc.textProperty().isEmpty())
+					.or(txtResp.textProperty().isEmpty()).or(dpData.valueProperty().isNull()).or(txtDecor.textProperty().isEmpty());
 			// indica se há algo selecionado na tabela
-			BooleanBinding algoSelecionado = tblTarefas.getSelectionModel().selectedItemProperty().isNull();
+			BooleanBinding algoSelecionado = tblAtividades.getSelectionModel().selectedItemProperty().isNull();
 			// alguns botões só são habilitados se algo foi selecionado na tabela
 			btnApagar.disableProperty().bind(algoSelecionado);
 			btnAtualizar.disableProperty().bind(algoSelecionado);
@@ -146,13 +160,15 @@ public class FXMLTarefasController implements Initializable{
 			btnSalvar.disableProperty().bind(algoSelecionado.not().or(camposPreenchidos));
 			// quando algo é selecionado na tabela, preenchemos os campos de entrada com os valores para o 
 			// usuário editar
-			tblTarefas.getSelectionModel().selectedItemProperty().addListener((b, o, n) -> {
+			tblAtividades.getSelectionModel().selectedItemProperty().addListener((b, o, n) -> {
 				if (n != null) {
 					LocalDate data = null;
 					data = n.getData().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-					txtNome.setText(n.getNome());
+					txtTitulo.setText(n.getTitulo());
 					txtDesc.setText(n.getDescricao());
+					txtResp.setText(n.getResponsavel());
 					dpData.setValue(data);
+					txtDecor.setText(n.getDecorrencia());
 				}
 			});
 		}

@@ -14,7 +14,7 @@ public class FXMLMainController {
     private JFXButton btnEvents;
     
     @FXML
-    private JFXButton btnTaref;
+    private JFXButton btnAtiv;
 
     @FXML
     private JFXButton btnDoc;
@@ -81,13 +81,13 @@ public class FXMLMainController {
     }
     
     @FXML
-    private void tarefas(MouseEvent event) {
-    	LoadRoot.loadScene("/casiaplication/view/FXMLTarefas", getClass());
+    private void atividades(MouseEvent event) {
+    	LoadRoot.loadScene("/casiaplication/view/FXMLAtividades", getClass());
     }
     
     @FXML
-    private void openTaref(MouseEvent event) {
-    	LoadRoot.loadScene("/casiaplication/view/FXMLTarefas", getClass());
+    private void openAtiv(MouseEvent event) {
+    	LoadRoot.loadScene("/casiaplication/view/FXMLAtividades", getClass());
     }
     
     @FXML

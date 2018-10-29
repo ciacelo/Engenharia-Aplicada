@@ -20,58 +20,61 @@ import java.util.stream.Collectors;
 
 import javax.swing.JOptionPane;
 
-import casiaplication.model.domain.Tarefa;
+import casiaplication.model.domain.Atividade;
 
-public class TarefaTXTService implements TarefaService{
+public class AtividadeTXTService implements AtividadefaService{
 
 	// divisor de colunas no arquivo
 			private static final String SEPARADOR = ";";
 
 			// o caminho para o arquivo deve ser selecionado aqui
 			
-			private static final Path ARQUIVO_SAIDA = Paths.get("src/tarefas.txt");
+			private static final Path ARQUIVO_SAIDA = Paths.get("src/Atividades.txt");
 
 			// os dados do arquivo
-			private List<Tarefa> tarefas;
+			private List<Atividade> atividades;
 
 			// formato de data usado no arquivo
 			final SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-			public TarefaTXTService() {
+			public AtividadeTXTService() {
 				carregaDados();
 			}
 
 			@Override
-			public void salvar(Tarefa tarefa) {
-				tarefa.setId(ultimoId() + 1);
-				tarefas.add(tarefa);
+			public void salvar(Atividade atividade) {
+				atividade.setId(ultimoId() + 1);
+				atividades.add(atividade);
 				salvaDados();
 			}
 
 
 			@Override
-			public void atualizar(Tarefa tarefa) {
-				Tarefa TarefaAntiga = buscaPorId(tarefa.getId());
-				TarefaAntiga.setNome(tarefa.getNome());
-				TarefaAntiga.setDescricao(tarefa.getDescricao());
+			public void atualizar(Atividade atividade) {
+				Atividade AtividadeAntiga = buscaPorId(atividade.getId());
+				AtividadeAntiga.setTitulo(atividade.getTitulo());
+				AtividadeAntiga.setDescricao(atividade.getDescricao());
+				AtividadeAntiga.setResponsavel(atividade.getResponsavel());
+				AtividadeAntiga.setDecorrencia(atividade.getDecorrencia());
+				AtividadeAntiga.setData(atividade.getData());
 				salvaDados();
 			}
 
 			@Override
-			public List<Tarefa> buscarTodas() {
-				return tarefas;
+			public List<Atividade> buscarTodas() {
+				return atividades;
 			}
 
 			@Override
 			public void apagar(int id) {
-				Tarefa tarefa = buscaPorId(id);
-				tarefas.remove(tarefa);
+				Atividade atividade = buscaPorId(id);
+				atividades.remove(atividade);
 				salvaDados();
 			}
 
-			public Tarefa buscaPorId(int id) {
-				return tarefas.stream().filter(e -> e.getId() == id).findFirst()
-						.orElseThrow(() -> new Error("Tarefa não encontrado"));
+			public Atividade buscaPorId(int id) {
+				return atividades.stream().filter(e -> e.getId() == id).findFirst()
+						.orElseThrow(() -> new Error("Atividade não encontrado"));
 			}
 
 			// salva a lista de dados no arquivo, gerando um novo TXT e escrevendo o arquivo completamente
@@ -80,7 +83,7 @@ public class TarefaTXTService implements TarefaService{
 				FileInputStream input;
 			    String result = null;
 			    try {
-			        input = new FileInputStream(new File("src/tarefas.txt"));
+			        input = new FileInputStream(new File("src/Atividades.txt"));
 			        CharsetDecoder decoder = Charset.forName("Cp1252").newDecoder();
 			        decoder.onMalformedInput(CodingErrorAction.IGNORE);
 			        InputStreamReader reader = new InputStreamReader(input, decoder);
@@ -94,7 +97,7 @@ public class TarefaTXTService implements TarefaService{
 			        }
 			        bufferedReader.close();
 			        result = sb.toString();
-					for (Tarefa e : tarefas) {
+					for (Atividade e : atividades) {
 						String linha = criaLinha(e);
 						sb.append(linha);
 						sb.append(System.getProperty("line.separator"));
@@ -119,48 +122,49 @@ public class TarefaTXTService implements TarefaService{
 			
 			// o ID mais alto é retornado aqui para continuarmos contando os IDs
 			private int ultimoId() {
-				return tarefas.stream().mapToInt(Tarefa::getId).max().orElse(0);
+				return atividades.stream().mapToInt(Atividade::getId).max().orElse(0);
 			}
 
-			// carrega os dados do arquivo para a lista Tarefas
+			// carrega os dados do arquivo para a lista Atividades
 			private void carregaDados() {
 				try {
 					if(!Files.exists(ARQUIVO_SAIDA)) {
 						Files.createFile(ARQUIVO_SAIDA);
 					}
 		
-					tarefas = Files.lines(ARQUIVO_SAIDA, Charset.forName("Cp1252")).map(this::leLinha).collect(Collectors.toList());
+					atividades = Files.lines(ARQUIVO_SAIDA, Charset.forName("Cp1252")).map(this::leLinha).collect(Collectors.toList());
 				} catch (IOException e) {
 					e.printStackTrace();
 					System.exit(0);
 				}
 			}
 			
-			// transforma uma linha do TXT para o tipo Tarefa
-			private Tarefa leLinha(String linha) {
+			// transforma uma linha do TXT para o tipo Atividade
+			private Atividade leLinha(String linha) {
 				String colunas[] = linha.split(SEPARADOR);
 				int id = Integer.parseInt(colunas[0]);
 				Date data = null;
 				try {
-					data = formatoData.parse(colunas[3]);
+					data = formatoData.parse(colunas[4]);
 				} catch (ParseException e) {
 					e.printStackTrace();
 					System.exit(0);
 				}
-				Tarefa tarefa = new Tarefa();
-				tarefa.setId(id);
-				tarefa.setNome(colunas[1]);
-				tarefa.setDescricao(colunas[2]);
-				tarefa.setData(data);
-				return tarefa;
+				Atividade Atividade = new Atividade();
+				Atividade.setId(id);
+				Atividade.setTitulo(colunas[1]);
+				Atividade.setDescricao(colunas[2]);
+				Atividade.setResponsavel(colunas[3]);
+				Atividade.setDecorrencia(colunas[5]);
+				return Atividade;
 			}
 			
 			// transforma um objeto conta em um arquivo TXT
-			private String criaLinha(Tarefa e) {
+			private String criaLinha(Atividade e) {
 				String dataStr = formatoData.format(e.getData());
 				String idStr = String.valueOf(e.getId());
-				String linha = String.join(SEPARADOR, idStr, e.getNome(),e.getDescricao(),
-						dataStr);
+				String linha = String.join(SEPARADOR, idStr, e.getTitulo(),e.getDescricao(),
+						e.getResponsavel(),dataStr, e.getDecorrencia());
 				return linha;
 			}
 			

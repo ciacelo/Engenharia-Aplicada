@@ -140,7 +140,7 @@ public class FXMLAtividadesController implements Initializable{
 		private void configuraColunas() {
 			clTitulo.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
 			clDesc.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
-			clResp.setCellValueFactory(new PropertyValueFactory<>("Responsável"));
+			clResp.setCellValueFactory(new PropertyValueFactory<>("Responsavel"));
 			clData.setCellValueFactory(new PropertyValueFactory<>("Data"));
 			clDecor.setCellValueFactory(new PropertyValueFactory<>("Decorrencia"));
 		}

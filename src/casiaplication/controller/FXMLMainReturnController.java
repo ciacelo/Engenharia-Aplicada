@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class FXMLMainReturn {
+public class FXMLMainReturnController {
 
 
     @FXML
@@ -28,8 +28,8 @@ public class FXMLMainReturn {
     }
     
     @FXML
-    void openTaref(MouseEvent event) {
-    	LoadRoot.loadScene("/casiaplication/view/FXMLTarefas", getClass());
+    void openAtiv(MouseEvent event) {
+    	LoadRoot.loadScene("/casiaplication/view/FXMLAtividades", getClass());
     }
 
 }    

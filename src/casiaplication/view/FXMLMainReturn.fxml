@@ -1,46 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="633.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLMainReturn">
+<AnchorPane prefHeight="610.0" prefWidth="788.0" style="-fx-background-image: src\imagens\Imagens\back.png;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casiaplication.controller.FXMLMainReturnController">
    <children>
-      <HBox alignment="CENTER" layoutX="88.0" layoutY="262.0" prefHeight="125.0" prefWidth="539.0" spacing="80.0">
-         <children>
-            <ImageView fx:id="iconTaref" fitHeight="64.0" fitWidth="50.0" onMouseClicked="#openTaref" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../imagens/Imagens/icons8-gerenciamento-de-eventos-filled-50.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="iconEvents" fitHeight="50.0" fitWidth="48.0" onMouseClicked="#openEvents" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../imagens/Imagens/icons8-hora-extra-filled-50.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="iconDoc" fitHeight="50.0" fitWidth="46.0" onMouseClicked="#openDoc" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../imagens/Imagens/icons8-pasta-de-documentos-filled-50.png" />
-               </image>
-            </ImageView>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <effect>
-            <DropShadow />
-         </effect>
-      </HBox>
-      <Label layoutX="220.0" layoutY="83.0" prefHeight="121.0" prefWidth="339.0" text="CA System" textFill="#2a2a2c">
+      <ImageView fitHeight="1092.0" fitWidth="1435.0" layoutX="11.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-482.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-647.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../imagens/Imagens/back1.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="184.0" layoutY="57.0" prefHeight="121.0" prefWidth="529.0" text="CA System" textFill="#e4e2d4" AnchorPane.bottomAnchor="432.0" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="197.0" AnchorPane.topAnchor="57.0">
          <font>
             <Font name="System Bold Italic" size="64.0" />
          </font>
@@ -48,29 +26,66 @@
             <Bloom threshold="0.13" />
          </effect>
       </Label>
-      <Label layoutX="334.0" layoutY="387.0" text="Eventos">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Label>
-      <Label layoutX="194.0" layoutY="387.0" text="Atividades">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Label>
-      <Label layoutX="450.0" layoutY="387.0" text="Documentos">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Label>
+      <GridPane alignment="CENTER" layoutX="138.0" layoutY="231.0" prefHeight="266.0" prefWidth="635.0" style="-fx-border-color: fff;" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="138.0" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="231.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="131.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="2.0" prefHeight="135.0" valignment="TOP" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ImageView fx:id="iconTaref" fitHeight="64.0" fitWidth="50.0" onMouseClicked="#openAtiv" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+               <image>
+                  <Image url="@../../imagens/Imagens/icons8-gerenciamento-de-eventos-filled-50.png" />
+               </image>
+               <effect>
+                  <DropShadow color="#f1eded" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="iconEvents" fitHeight="50.0" fitWidth="48.0" onMouseClicked="#openEvents" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <image>
+                  <Image url="@../../imagens/Imagens/icons8-hora-extra-filled-50.png" />
+               </image>
+               <effect>
+                  <DropShadow color="#f1eded" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="iconDoc" fitHeight="50.0" fitWidth="46.0" onMouseClicked="#openDoc" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+               <image>
+                  <Image url="@../../imagens/Imagens/icons8-pasta-de-documentos-filled-50.png" />
+               </image>
+               <effect>
+                  <DropShadow color="#f1eded" />
+               </effect>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="94.0" text="Atividades" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#cdc0c0" />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="94.0" text="Eventos" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#eae2e2" />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" prefHeight="27.0" prefWidth="94.0" text="Documentos" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#eae2e2" />
+               </effect>
+            </Label>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

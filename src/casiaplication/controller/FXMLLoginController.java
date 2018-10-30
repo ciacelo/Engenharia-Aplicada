@@ -62,7 +62,7 @@ public class FXMLLoginController implements Initializable {
         try {
             String user = txtUserName.getText();
             String pass = txtPassword.getText();
-            if(user.equals("c")&& pass.equals("c")){
+            if(user.equals("casi@ufpb")&& pass.equals("casi")){
 
                 new FadeOutDownTransition(anchorPane)
                 .setOnFinish((e) -> {

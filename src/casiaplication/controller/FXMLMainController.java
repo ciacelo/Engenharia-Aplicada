@@ -95,4 +95,9 @@ public class FXMLMainController {
     	LoadRoot.loadScene("/casiaplication/view/FXMLFinancie", getClass());
     }
     
+    @FXML
+    private void usuarios(MouseEvent event) {
+    	LoadRoot.loadScene("/casiaplication/view/FXMLUsuario", getClass());
+    }
+    
 }
